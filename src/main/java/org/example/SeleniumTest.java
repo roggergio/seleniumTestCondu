@@ -5,6 +5,7 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -69,16 +70,47 @@ public class SeleniumTest {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Xpths.get("xpNombre"))));
             insertInfo.fillField(Xpths.get("xpNombre"), credentials.get("nombre"));
             insertInfo.fillField(Xpths.get("xpApellidoPat"), credentials.get("apellidoPat"));
+            insertInfo.fillField(Xpths.get("xpApellidoMat"), credentials.get("apellidoMat"));
+            insertInfo.fillField(Xpths.get("xpCurp"), credentials.get("curp"));
+            insertInfo.fillField(Xpths.get("xpEmail"), credentials.get("email"));
+            insertInfo.fillField(Xpths.get("xpConfirmacionEmail"), credentials.get("confirmacionEmail"));
+            insertInfo.fillField(Xpths.get("xpTelefonoFijo"), credentials.get("telefonoFijo"));
+            insertInfo.fillField(Xpths.get("xpTelefonoMovil"), credentials.get("telefonoMovil"));
+            insertInfo.fillField(Xpths.get("xpConfirmaciontelfonoMovil"), credentials.get("confirmaciontelfonoMovil"));
+            click.onElement(Xpths.get("xpTipodeidentificación"));//select[@id='tIDE-01']/option[text()='Cédula profesional']
+            insertInfo.fillField(Xpths.get("xpNumeroIdentificacion"), credentials.get("numeroIdentificacion"));
+
 
         // Tomar captura de pantalla en formulario de datos de usuario
             String datosUsuarioScreenshotPath = "datosUsuario.png";
             screenshotUtil.captureScreenshot(datosUsuarioScreenshotPath);
             screenshots.add(datosUsuarioScreenshotPath);
 
-    //formulario direccion de usuario
-            insertInfo.fillField(Xpths.get("xpApellidoPat"), credentials.get("apellidoPat"));
 
+    //Domicilio del usuario
+            insertInfo.fillField(Xpths.get("xpCódigoPostal"), credentials.get("codigopostal"));
+            Thread.sleep(6000);
+//click.onElement(Xpths.get("xpEntidadFederativa"));
+//click.onElement(Xpths.get("xpAlcaldía/Municipio"));
+//click.onElement(Xpths.get("xpColonia"));
+            insertInfo.fillField(Xpths.get("xpCalle"), credentials.get("calle"));
+            insertInfo.fillField(Xpths.get("xpNúmeroext"), credentials.get("numeroexterior"));
+            insertInfo.fillField(Xpths.get("xpNúmeroint"), credentials.get("numerointerior"));
+            //click.onElement(Xpths.get("xpEntidadFederativa"));
 
+            /*
+    //Unidad de Atención de la Condusef
+            click.onElement(Xpths.get("xpUnidaddeagtención"));//select[@id='aDelegacion-01']/option[text()='Unidad (A1) - CDMX - Metropolitana Central']
+    //Datos del asunto
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Xpths.get("xpSectorFinanciero"))));
+            click.onElement(Xpths.get("xpSectorFinanciero"));//select[@id='sFinanciero-01']/option[text()='Instituciones de banca múltiple (BANCOS)']
+            click.onElement(Xpths.get("xpInstituciónFinanciera"));//select[@id='iFinanciero-01']/option[text()='Azteca - Banco Azteca, S.A., Institución de Banca Múltiple']
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Xpths.get("xpProducto"))));
+            click.onElement(Xpths.get("xpProducto"));//select[@id='pFinanciero-01']/option[text()='Banca móvil']
+            click.onElement(Xpths.get("xpCausa"));//select[@id='cFinanciero-01']/option[text()='Aceptación de promoción efectivo inmediato no reconocida']
+            insertInfo.fillField(Xpths.get("xpNo.Poliza/Cuenta/Contrato/Tarjeta"), credentials.get("No.Poliza/Cuenta/Contrato/Tarjeta"));
+            insertInfo.fillField(Xpths.get("xpMonto"), credentials.get("Monto"));
+*/
     // Crear documento Word
             try (XWPFDocument document = new XWPFDocument();
                  FileOutputStream out = new FileOutputStream("FormularioCompleto.docx")) {
@@ -121,6 +153,7 @@ public class SeleniumTest {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            System.out.println("Termine");
             //driver.quit(); // Asegúrate de cerrar el navegador al final
         }
     }

@@ -5,11 +5,26 @@ xpacepta_avipriv=//input[@id='acepta_avipriv']
 xpbtnacep_avipriv=//button[@id='btnacep_avipriv']
 xpNombre=//input[@id='nombre-01']
 xpApellidoPat=//input[@id='aPaterno-01']
-xpApellidoMat=
-xpCurp=
-xpEmail=
-xpConfirmacionEmail=
-xpTelefonoFijo=
-xpTelefonoMovil=
-xpConfirmaciontelfonoMovil=
-xpNumeroIdentificacion=
+xpApellidoMat=//input[@id='aMaterno-01']
+xpCurp=//input[@id='Curp-01']
+xpEmail=//input[@id='eMail-01']
+xpConfirmacionEmail=//input[@id='eMail-02']
+xpTelefonoFijo=//input[@id='tFijo-01']
+xpTelefonoMovil=//input[@id='tMovil-01']
+xpConfirmaciontelfonoMovil=//input[@id='tMovil-02']
+xpTipodeidentificación=//select[@id='tIDE-01']/option[text()='Cédula profesional']
+xpNumeroIdentificacion=//input[@id='cIDE-01']
+xpCódigoPostal=//input[@id='cp-01']
+xpEntidadFederativa=//select[@id='eFederativa-01']
+xpAlcaldía/Municipio=//select[@id='aMunicipio-01']
+xpColonia=//select[@id='aColonia-01']
+xpCalle=//input[@id='pCalle-01']
+xpNúmeroext=//input[@id='pNumero-01']
+xpNúmeroint=//input[@id='pNumeroInt-01']
+xpUnidaddeagtención=//select[@id='aDelegacion-01']/option[text()='Unidad (A1) - CDMX - Metropolitana Central']
+xpSectorFinanciero=//select[@id='sFinanciero-01']/option[text()='Instituciones de banca múltiple (BANCOS)']
+xpInstituciónFinanciera=//select[@id='iFinanciero-01']/option[text()='Azteca - Banco Azteca, S.A., Institución de Banca Múltiple']
+xpProducto=//select[@id='pFinanciero-01']/option[text()='Banca móvil']
+xpCausa=//select[@id='cFinanciero-01']/option[text()='Aceptación de promoción efectivo inmediato no reconocida']
+xpNo.Poliza/Cuenta/Contrato/Tarjeta=//input[@id='pNoPCC']
+xpMonto=//input[@id='pMontoQ']
