@@ -51,6 +51,14 @@ public class SeleniumTest {
             click.onElement(Xpths.get("xpLogin"));
 
     // Aviso de privacidad
+            click.onElement(Xpths.get("xpbuttonContinuar"));
+        // Tomar captura de pantalla en login y agregarlo añ arreglo de capturas que se enviaran a word, siguientes 3 lineas de codigo
+
+            String xpbuttonContinuarshotPath = "xpbuttonContinuar.png";
+            screenshotUtil.captureScreenshot(xpbuttonContinuarshotPath);
+            screenshots.add(xpbuttonContinuarshotPath);
+
+    // Aviso de privacidad
             click.onElement(Xpths.get("xpacepta_avipriv"));
         // Tomar captura de pantalla en login y agregarlo añ arreglo de capturas que se enviaran a word, siguientes 3 lineas de codigo
 
@@ -88,20 +96,48 @@ public class SeleniumTest {
 
 
     //Domicilio del usuario
+
             insertInfo.fillField(Xpths.get("xpCódigoPostal"), credentials.get("codigopostal"));
             Thread.sleep(6000);
-//click.onElement(Xpths.get("xpEntidadFederativa"));
-//click.onElement(Xpths.get("xpAlcaldía/Municipio"));
-//click.onElement(Xpths.get("xpColonia"));
+            //click.onElement(Xpths.get("xpEntidadFederativa"));
+            //click.onElement(Xpths.get("xpAlcaldía/Municipio"));
+            //click.onElement(Xpths.get("xpColonia"));
             insertInfo.fillField(Xpths.get("xpCalle"), credentials.get("calle"));
             insertInfo.fillField(Xpths.get("xpNúmeroext"), credentials.get("numeroexterior"));
             insertInfo.fillField(Xpths.get("xpNúmeroint"), credentials.get("numerointerior"));
             //click.onElement(Xpths.get("xpEntidadFederativa"));
+        //captura de pantalla
+            String direccionUsuarioScreenshotPath = "direccionUsuario.png";
+            screenshotUtil.captureScreenshot(direccionUsuarioScreenshotPath);
+            screenshots.add(direccionUsuarioScreenshotPath);
 
-            /*
+
     //Unidad de Atención de la Condusef
             click.onElement(Xpths.get("xpUnidaddeagtención"));//select[@id='aDelegacion-01']/option[text()='Unidad (A1) - CDMX - Metropolitana Central']
-    //Datos del asunto
+
+            // Espera a que el iframe esté disponible
+
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Xpths.get("xpAcceptButton"))));
+        //captura d pantalla Unidad de Atención de la Condusef
+            String UnidadAtencionScreenshotPath = "UnidadAtencion.png";
+            screenshotUtil.captureScreenshot(UnidadAtencionScreenshotPath);
+            screenshots.add(UnidadAtencionScreenshotPath);
+            click.onElement(Xpths.get("xpAcceptButton"));
+
+            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
+                    By.xpath("//iframe[contains(@src, 'tramites.condusef.gob.mx')]")
+            ));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Xpths.get("xpAcceptButton"))));
+            click.onElement(Xpths.get("xpAcceptButton"));
+            Thread.sleep(300);
+
+            String buttonOkScreenshotPath = "buttonOk.png";
+            screenshotUtil.captureScreenshot(buttonOkScreenshotPath);
+            screenshots.add(buttonOkScreenshotPath);
+            click.onElement(Xpths.get("buttonOk"));
+
+            //Datos del asunto
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Xpths.get("xpSectorFinanciero"))));
             click.onElement(Xpths.get("xpSectorFinanciero"));//select[@id='sFinanciero-01']/option[text()='Instituciones de banca múltiple (BANCOS)']
             click.onElement(Xpths.get("xpInstituciónFinanciera"));//select[@id='iFinanciero-01']/option[text()='Azteca - Banco Azteca, S.A., Institución de Banca Múltiple']
@@ -110,7 +146,13 @@ public class SeleniumTest {
             click.onElement(Xpths.get("xpCausa"));//select[@id='cFinanciero-01']/option[text()='Aceptación de promoción efectivo inmediato no reconocida']
             insertInfo.fillField(Xpths.get("xpNo.Poliza/Cuenta/Contrato/Tarjeta"), credentials.get("No.Poliza/Cuenta/Contrato/Tarjeta"));
             insertInfo.fillField(Xpths.get("xpMonto"), credentials.get("Monto"));
-*/
+
+
+            String SectorScreenshotPath = "Sector.png";
+            screenshotUtil.captureScreenshot(SectorScreenshotPath);
+            screenshots.add(SectorScreenshotPath);
+            click.onElement(Xpths.get("sector"));
+
     // Crear documento Word
             try (XWPFDocument document = new XWPFDocument();
                  FileOutputStream out = new FileOutputStream("FormularioCompleto.docx")) {
